@@ -52,8 +52,8 @@ if (cluster.isMaster) {
   });
 
   var httpServ = http.Server(app),
-    server_port = process.env.SERVER_PORT || 80,
-    server_ip_address = process.env.SERVER_IP || '0.0.0.0';
+    server_port = process.env.PORT || process.env.SERVER_PORT || 80,
+    server_ip_address = process.env.IP || process.env.SERVER_IP || '0.0.0.0';
 
   httpServ.listen(server_port, server_ip_address);
 }
