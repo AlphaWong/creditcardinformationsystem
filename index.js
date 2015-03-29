@@ -2,27 +2,14 @@
 var http = require('http'),
   fs = require('fs'),
   express = require('express'),
-  jade = require('jade'),
-  cluster = require('cluster'),
+  jade = require('jade'),  
   bodyParser = require('body-parser'),
   session = require('express-session'),
   numCPUs = require('os').cpus().length,
   cwd = process.cwd(),
   expire = 60 * 1000 * 60 * 24 * 7;
 
-
-if (cluster.isMaster) {
-  for (var i = 0; i < numCPUs; i++) {
-    cluster.fork();
-  }
-
-  cluster.on('exit', function(worker, code, signal) {
-    console.log('worker ' + worker.process.pid + ' died');
-    cluster.fork();
-  });
-
-} else {
-  var app = express();
+var app = express();
 
   app.use(require('compression')());
   app.use(bodyParser.urlencoded({
@@ -56,4 +43,3 @@ if (cluster.isMaster) {
     server_ip_address = process.env.IP || process.env.SERVER_IP || '0.0.0.0';
 
   httpServ.listen(server_port, server_ip_address);
-}
