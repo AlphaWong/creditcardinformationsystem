@@ -6,13 +6,13 @@ var http = require('http'),
     bodyParser = require('body-parser'),
     session = require('express-session'),
     morgan = require('morgan'),
+    passport = require('passport'),
     numCPUs = require('os').cpus().length,
+    CreditCardinFormationSystemApp = require('./app'),
+    lib = require('./lib'),
     cwd = process.cwd(),
-    expire = 60 * 1000 * 60 * 24 * 7;
-
-
-
-var app = express();
+    expire = 60 * 1000 * 60 * 24 * 7,
+    app = express();
 
 app.use(morgan('combined'));
 app.use(require('compression')());
@@ -27,11 +27,12 @@ app.use('/', express.static(cwd + '/public', {
     maxAge: expire
 }));
 
-app.set('view engine', 'jade');
-app.engine('jade', require('jade').__express);
+CreditCardinFormationSystemApp.route.forEach(function(route) {
+    app.use(route.key, route.router);
+});
 
-app.get('/*', function (req, res) {
-    res.redirect('index.html');
+app.get('/*', function(req, res) {
+    res.redirect('/index.html');
 });
 
 var httpServ = http.Server(app),
