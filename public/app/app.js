@@ -1,1 +1,1 @@
-var mcbsApp = angular.module('CreditCardInfoSystemApp', ['ngRoute', 'ngResource'])
+var creditCardInfoSystemApp = angular.module('CreditCardInfoSystemApp', [ 'ngResource'])
