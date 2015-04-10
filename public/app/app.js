@@ -1,3 +1,3 @@
 'use strict';
 
-var app = angular.module('CreditCardApp', ['ngRoute', 'ngResource']);
+var app = angular.module('CreditCardApp', ['ngMaterial', 'ngRoute', 'ngResource']);
