@@ -1,6 +1,6 @@
 'use strict';
 
-creditCardInfoSystemApp.factory('BroadCast', function($rootScope) {
+app.factory('BroadCast', function($rootScope) {
         return function(event, value) {
             $rootScope.$broadcast(event, value);
         };

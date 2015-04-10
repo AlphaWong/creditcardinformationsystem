@@ -1,1 +1,3 @@
-var creditCardInfoSystemApp = angular.module('CreditCardInfoSystemApp', [ 'ngResource'])
+'use strict';
+
+var app = angular.module('CreditCardApp', ['ngRoute', 'ngResource']);

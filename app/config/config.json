@@ -1,7 +1,6 @@
 {
   "Name": "",
   "dbName": "Comp",
-  "dbAddr": "192.168.1.88",
   "port": 80,
   "session": {
     "name": "",

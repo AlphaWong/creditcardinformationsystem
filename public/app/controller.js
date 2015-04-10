@@ -1,6 +1,6 @@
 'use strict';
 
-creditCardInfoSystemApp.controller('PostCtrl', function($scope, Post) {
+app.controller('PostCtrl', function($scope, Post) {
         $scope.init = function() {
 
         };

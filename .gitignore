@@ -16,3 +16,4 @@ node_modules
 /private/data/backup
 log/log.txt
 private/bin/nssm.exe
+data/
