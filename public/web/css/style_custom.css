@@ -1,0 +1,17 @@
+.hotKey{
+	margin-top: 5px;
+}
+.hotKey label{
+	color: #FA6767;
+	margin-right:5px;
+}
+.hotKey>span{
+	margin-right:5px;
+	padding: 2px 5px;
+}
+.hotKey  a{
+	color: #8ca9b9;
+}
+.hotKey  a:hover{
+	text-decoration: underline;
+}
