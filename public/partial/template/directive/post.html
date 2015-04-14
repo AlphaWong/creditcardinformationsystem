@@ -1,10 +1,14 @@
-<md-content class="md-padding" layout-padding>
+<md-content class="md-padding" layout-padding ng-controller="PostCtrl">
     <md-card>
         <img ng-show="post.img" ng-src="/content/{{post.img}}" class="md-card-image">
         <md-card-content>
             <h2 class="md-title" ng-bind="post.title"></h2>
             <p ng-bind="post.content |limitTo: 100"></p>
-            <a ng-click="click()">Read More</a>
+            <div layout="column" layout-align="center">
+                <md-button class="md-primary" ng-click="showDetail($event)">
+                    Read More
+                </md-button>
+            </div>
         </md-card-content>
     </md-card>
 </md-content>

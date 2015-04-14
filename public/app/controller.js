@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('PostCtrl', function($scope, Post) {
+app.controller('PostGridCtrl', function($scope, Post) {
         $scope.init = function() {
             $scope.posts = Post.query();
             $scope.limit = 10;
@@ -17,4 +17,15 @@ app.controller('PostCtrl', function($scope, Post) {
         $scope.toggleSidenav = function(menuId) {
             $mdSidenav(menuId).toggle();
         };
-    }]);
+    }])
+    .controller('PostCtrl', function($scope, $mdDialog) {
+        $scope.showDetail = function(ev) {
+            $mdDialog.show(
+                $mdDialog.alert()
+                .title($scope.post.title)
+                .content($scope.post.content)                
+                .ok('Got it!')
+                .targetEvent(ev)
+            );
+        };
+    });
