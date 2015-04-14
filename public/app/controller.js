@@ -28,4 +28,14 @@ app.controller('PostGridCtrl', function($scope, Post) {
                 .targetEvent(ev)
             );
         };
+    })
+    .controller('CreditCardGridCtrl', function($scope, CreditCard) {
+        $scope.init = function() {
+            $scope.creditcards = CreditCard.query();
+            $scope.limit = 10;
+        };
+        $scope.loadMore = function() {
+            $scope.limit += 10;
+            console.log('call')
+        }
     });
