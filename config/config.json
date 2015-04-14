@@ -1,0 +1,16 @@
+{
+  "Name": "",
+  "dbName": "Comp",
+  "port": 80,
+  "session": {
+    "name": "",
+    "secret": "",
+    "resave": true,
+    "cookie": {
+      "httpOnly": true,
+      "maxAge": 604800000
+    },
+    "rolling": true,
+    "saveUninitialized": true
+  }
+}
