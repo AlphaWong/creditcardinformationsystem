@@ -1,25 +1,10 @@
-<!-- <div class="post">
-  <span>This Post!!!!!</span>
-  <div ng-bind="post.title"> </div>
-  <div > </div>
-</div>
-
-<md-card>
- <md-card-content ng-bind="post.content">
-   <h2>Card headline</h2>
-   <p>Card content</p>
-   <md-chip>Card content</md-chip>
- </md-card-content>
- <md-card-footer>
-   Card footer
- </md-card-footer>
-</md-card> -->
-<md-content class="md-padding">
-  <md-card>
-    <md-card-content>
-      <h2 class="md-title" ng-bind="post.title">Paracosm</h2>
-      <p ng-bind="post.content">
-      </p>
-    </md-card-content>
-  </md-card>
+<md-content class="md-padding" layout-padding>
+    <md-card>
+        <img ng-show="post.img" ng-src="/content/{{post.img}}" class="md-card-image">
+        <md-card-content>
+            <h2 class="md-title" ng-bind="post.title"></h2>
+            <p ng-bind="post.content |limitTo: 100"></p>
+            <a ng-click="click()">Read More</a>
+        </md-card-content>
+    </md-card>
 </md-content>
