@@ -67,7 +67,7 @@ body a{
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	font-weight: 400;
-	font-size: 16px;
+	font-size: 14px;
 }
 .head-nav ul li a:hover,.head-nav ul li.active a{
 	color:#fff;
