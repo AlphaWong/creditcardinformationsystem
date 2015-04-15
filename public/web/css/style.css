@@ -19,7 +19,7 @@ body a{
 	-ms-transition:0.5s all;
 }
 .header {
-	padding: 2em 0;
+	padding: 0.2em 0;
 	border-bottom: 1px solid #6f879a;
 }
 .logo a{
@@ -95,7 +95,6 @@ ul a:focus {
 	opacity: 0;
 }
 .head-nav {
-	padding: 1em 0;
 }
 .header-right ul li {
 	display: inline-block;
@@ -103,7 +102,7 @@ ul a:focus {
 }
 .header-right {
 	float: right;
-	margin: 2.1em 0;
+	margin: 1em 0;
 }
 .header-right ul {
 	padding: 0;
@@ -1198,7 +1197,7 @@ ul.links li.last {
 }
 .head-nav ul li a {
 	font-size: 1.1em;
-	padding:0.5em 1.5em;
+	padding:0.4em 1.5em;
 	display:block;
 }
 .head-nav ul li a:hover {
