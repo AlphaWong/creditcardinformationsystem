@@ -13,7 +13,6 @@
 </head>
 
 <body layout="column">
-
     <header>
         <md-toolbar layout="row">
             <button ng-click="toggleSidenav('left')" hide-gt-sm class="menuBtn">
@@ -53,7 +52,6 @@
 
                     </div>
                     <div class="clearfix"> </div>
-                    <compose></compose>
                 </div>
             </div>
         </md-toolbar>
@@ -75,6 +73,10 @@
                                     </md-grid-list>
                                 </md-content>
                             </md-content>
+                            <section layout="row" layout-sm="column" layout-align="center center">
+                                <md-button class="md-raised" ng-click="loadLess()">Button</md-button>
+                                <md-button class="md-raised md-primary" ng-click="loadMore()">Primary</md-button>
+                            </section>
                         </div>
 
                     </md-content>
@@ -91,15 +93,17 @@
                                             <creditcard></creditcard>
                                         </md-grid-tile>
                                     </md-grid-list>
+
                                 </md-content>
                             </md-content>
+
                         </div>
 
                     </md-content>
                 </md-tab>
             </md-tabs>
-
         </md-content>
+        <!-- <compose></compose> -->
 
     </div>
     <footer class="hidden-print">
