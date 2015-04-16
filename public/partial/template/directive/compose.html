@@ -1,0 +1,26 @@
+<form ng-controller="ComposeCtrl" layout="column" ng-submit="submit()">
+    <md-content layout-padding layout-sm="column">
+        <div layout layout-sm="column">
+            <md-input-container flex>
+                <label>Title</label>
+                <input ng-model="post.title">
+            </md-input-container>
+        </div>
+        <div layout layout-sm="column">
+            <md-input-container flex>
+                <label>Merchant</label>
+                <input ng-model="post.merchant">
+            </md-input-container>
+        </div>
+        <md-input-container flex>
+            <label>Content</label>
+            <textarea ng-model="post.content" columns="1" md-maxlength="1000"></textarea>
+        </md-input-container>
+        <div layout layout-sm="column">
+            <md-input-container>
+                <md-button class="md-primary" type="submit">Submit</md-button>
+            </md-input-container>
+        </div>
+    </md-content>
+    <!--"tag" : []-->
+</form>

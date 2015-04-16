@@ -7,10 +7,7 @@ app.controller('PostGridCtrl', function($scope, Post) {
         };
         $scope.loadMore = function() {
             $scope.limit += 10;
-        }
-        $scope.loadLess = function() {
-            $scope.limit -= 10;
-            if ($scope.limit < 10) $scope.limit = 0;
+            console.log('call')
         }
     })
     .controller('AppCtrl', ['$scope', '$mdSidenav', function($scope, $mdSidenav) {
@@ -23,7 +20,7 @@ app.controller('PostGridCtrl', function($scope, Post) {
             $mdDialog.show(
                 $mdDialog.alert()
                 .title($scope.post.title)
-                .content($scope.post.content)                
+                .content($scope.post.content)
                 .ok('Got it!')
                 .targetEvent(ev)
             );
@@ -38,4 +35,13 @@ app.controller('PostGridCtrl', function($scope, Post) {
             $scope.limit += 10;
             console.log('call')
         }
+    }).controller('ComposeCtrl', function($scope,Post) {
+        $scope.init = function() {
+
+        };
+        $scope.submit = function () {
+            var post=new Post($scope.post);
+            post.$save();
+        };
     });
+

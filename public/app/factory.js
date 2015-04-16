@@ -15,4 +15,8 @@ app.factory('BroadCast', function($rootScope) {
             post_id: '@post_id'
         }, {});
     }])
+    .factory('CreditCard', ['$resource', function($resource) {
+        return $resource('/api/creditcard/post/:post_id', {
+            post_id: '@post_id'
+        }, {});
     }]);
