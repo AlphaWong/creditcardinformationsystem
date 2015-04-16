@@ -35,12 +35,19 @@ function savePost(req, res) {
         post_id: req.params.post_id || req.body.post_id
     };
 
-    Post.findOneAndUpdate(query, req.body, {
-        upsert: true,
-        new: true
-    }).exec(function(err, result) {
-        return routeHandle(err, req, res, result);
-    });
+    if (query.post_id) {
+        Post.findOneAndUpdate(query, req.body, {
+            upsert: true,
+            new: true
+        }).exec(function(err, result) {
+            return routeHandle(err, req, res, result);
+        });
+    } else {
+        var post = new Post(req.body);
+        post.save(function(err) {
+            return routeHandle(err, req, res, post);
+        });
+    }
 }
 
 function routeHandle(err, req, res, result) {
