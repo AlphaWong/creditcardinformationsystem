@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('CreditCardApp', ['ngMaterial', 'ngRoute', 'ngResource', 'angular-carousel'])
+var app = angular.module('CreditCardApp', ['ngMaterial', 'ngRoute', 'ngResource', 'ngSanitize', 'ngAria', 'ngTouch', 'angular-carousel'])
     .config(function($mdThemingProvider) {
         $mdThemingProvider.theme('default')
             .primaryPalette('blue-grey')

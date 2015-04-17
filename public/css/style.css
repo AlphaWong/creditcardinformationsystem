@@ -25,7 +25,6 @@ body a {
     -ms-transition: 0.5s all;
 }
 .header {
-    padding-top: 1em;
     border-bottom: 1px solid #6f879a;
 }
 .logo a {
@@ -93,9 +92,6 @@ ul a:hover, ul a:focus {
     -moz-transform: scale(0.9);
     transform: scale(0.9);
     opacity: 0;
-}
-.head-nav {
-    padding: 1em 0;
 }
 .header-right ul li {
     display: inline-block;
@@ -1723,7 +1719,7 @@ header {
 #content {
     min-height: 100%;
     height: auto !important;
-    margin-top: 70px;
+    /*margin-top: 70px;*/
     margin-bottom: 40px;
     min-height: 100%;
 }
