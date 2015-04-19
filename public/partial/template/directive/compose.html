@@ -12,6 +12,12 @@
                 <input ng-model="post.merchant">
             </md-input-container>
         </div>
+        <div layout layout-sm="column">
+            <md-input-container>
+                <label>Image</label>
+                <input type="file" accept="image/*" />
+            </md-input-container>
+        </div>
         <md-input-container flex>
             <label>Content</label>
             <textarea ng-model="post.content" columns="1" md-maxlength="100000"></textarea>

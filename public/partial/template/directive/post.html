@@ -1,7 +1,34 @@
-<md-content class="md-padding" layout-padding ng-controller="PostCtrl">
+<md-content class="md-padding" layout-padding ng-controller="PostCtrl" ng-init="init()">
     <md-card>
         <md-card-content>
-            <div id="post-{{post.post_id}}" class="carousel slide" data-ride="carousel">
+            <md-tabs md-dynamic-height md-border-bottom md-selected="selectedIndex">
+                <md-tab label="one">
+                    <md-content class="md-padding">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin
+                            consectetur felis nec, feugiat ultricies mi.</p>
+                    </md-content>
+                </md-tab>
+                <md-tab label="two">
+                    <md-content class="md-padding">
+                        <p>
+                            <img style="width:100%" ng-show="post.img" ng-src="/content/{{post.img}}" class="md-card-image">
+                            <span ng-bind-html="post.content |limitTo: 100|linky"></span>
+                            <span ng-show="post.content.length>100">...</span>
+                        </p>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+
+
+
+
+
+
+
+
+
+
+            <!-- <div id="post-{{post.post_id}}" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="post-{{post.post_id}}" data-slide-to="0" class="active"></li>
                     <li data-target="post-{{post.post_id}}" data-slide-to="1"></li>
@@ -9,6 +36,7 @@
 
                 <div class="carousel-inner" role="listbox">
                     <div class="item active">
+
                         <img style="width:100%" ng-show="post.img" ng-src="/content/{{post.img}}" class="md-card-image">
                         <div class="carousel-caption">
                             <h3 class="md-title" ng-bind="post.title"></h2>
@@ -30,8 +58,8 @@
                     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>
-            </div>
-            <p><span ng-bind-html="post.content |limitTo: 100|linky"></span><span ng-show="post.content.length>100">...</span></p>
+            </div> -->
+
             <div layout="column" layout-align="center">
                 <md-button class="md-primary" ng-click="showDetail($event)">
                     Read More

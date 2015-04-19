@@ -10,12 +10,29 @@ app.controller('PostGridCtrl', function($scope, Post) {
             console.log('call')
         }
     })
-    .controller('AppCtrl', ['$scope', '$mdSidenav', function($scope, $mdSidenav) {
+    .controller('AppCtrl', ['$scope', '$mdSidenav', '$mdDialog', function($scope, $mdSidenav, $mdDialog) {
         $scope.toggleSidenav = function(menuId) {
             $mdSidenav(menuId).toggle();
         };
+        $scope.composePost = function(ev) {
+            $mdDialog.show({
+                controller: 'PostCtrl',
+                template: '<md-dialog aria-label="List dialog" flex="66">' +
+                    '  <md-content>' +
+                    '    <compose></compose>' +
+                    '  </md-content>' +
+                    '  <div class="md-actions">' +
+                    '    <md-button ng-click="closeDialog()">' +
+                    '      Close Dialog' +
+                    '    </md-button>' +
+                    '  </div>' +
+                    '</md-dialog>',
+                targetEvent: ev
+            });
+        };
     }])
-    .controller('PostCtrl', function($scope, $mdDialog) {
+    .controller('PostCtrl', ['$scope', '$mdDialog', '$timeout',
+        function($scope, $mdDialog, $timeout) {
         $scope.showDetail = function(ev) {
             $mdDialog.show(
                 $mdDialog.alert()
@@ -25,7 +42,22 @@ app.controller('PostGridCtrl', function($scope, Post) {
                 .targetEvent(ev)
             );
         };
-    })
+            $scope.closeDialog = function() {
+                $mdDialog.hide();
+            };
+            $scope.init = function() {
+                $scope.selectedIndex =  Math.round(Math.random());
+                nextSlide();
+            };
+
+            function nextSlide() {
+                $timeout(function() {
+                    $scope.selectedIndex = Math.round(Math.random());
+                    nextSlide();
+                }, Math.floor(7 + Math.random() * 4)*1000);
+            }
+        }
+    ])
     .controller('CreditCardGridCtrl', function($scope, CreditCard) {
         $scope.init = function() {
             $scope.creditcards = CreditCard.query();
