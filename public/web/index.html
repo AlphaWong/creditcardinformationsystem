@@ -17,7 +17,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
-<script src="js/jquery.min.js"></script>
+	<!--font resize-->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
+	<script src="http://www.jqueryscript.net/demo/jQuery-Plugin-For-Altering-The-Font-Size-On-Sites-jFontSize/js/jquery.jfontsize-1.0.js"></script>
+	<style src="http://www.jqueryscript.net/demo/jQuery-Plugin-For-Altering-The-Font-Size-On-Sites-jFontSize/css/shCoreDefault.css"></style>
+	<!--font resize-->
+	<script src="js/jquery.min.js"></script>
 <script>
 		$(document).ready(function () {
 		    size_li = $("#myList li").size();
@@ -71,18 +76,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="head-nav">
 					<span class="menu"> </span>
 						<ul class="cl-effect-15">
-						<li class="active"><a href="index.html"><img src="images/home.png" class="img-responsive" alt="Home" />HOME</a></li>
-							<li><a href="about.html" ><img src="images/cardList.png" class="img-responsive" alt="Card compare" />Card compare</a></li>
-							<li><a href="404.html" ><img src="images/giftCategory.png" class="img-responsive" alt="Welcome offer" />Welcome offer</a></li>
-							<li><a href="photos.html"><img src="images/newsCategory.png" class="img-responsive" alt="Privilege list" />Privilege list</a></li>
-							<li><a href="contact.html" ><img src="images/prnNews.png" class="img-responsive" alt="CONTACT" />CONTACT</a></li>
+						<li class="active"><a href="index.html"><img src="images/home.png" class="img-responsive" alt="Home" title="Home"/>HOME</a></li>
+							<li><a href="about.html" ><img src="images/cardList.png" class="img-responsive" alt="Card compare" title="Card compare" />Card compare</a></li>
+							<li><a href="404.html" ><img src="images/giftCategory.png" class="img-responsive" alt="Welcome offer" title="Welcome offer" />Welcome offer</a></li>
+							<li><a href="photos.html"><img src="images/newsCategory.png" class="img-responsive" alt="Privilege list" title="Privilege list" />Privilege list</a></li>
+							<li><a href="contact.html" ><img src="images/prnNews.png" class="img-responsive" alt="CONTACT" title="CONTACT" />CONTACT</a></li>
 								<div class="clearfix"> </div>
 						</ul>
 				</div>
 		<div class="interContainer">
 			<div class="breadcrumb">
-				<div class="pad">
-					Location: <a href="index.html">Credit Card Promotion </a>
+
+				<!--font size button-->
+
+				<div class="box" style="float: right;" >
+					<a class="jfontsize-button" id="jfontsize-m" href="#">A-</a>
+					<a class="jfontsize-button" id="jfontsize-d" href="#">A</a>
+					<a class="jfontsize-button" id="jfontsize-p" href="#">A+</a>
+					<script type="text/javascript" language="javascript">
+						$('.some-class-name').jfontsize({
+							btnMinusClasseId: '#jfontsize-m',
+							btnDefaultClasseId: '#jfontsize-d',
+							btnPlusClasseId: '#jfontsize-p'
+						});
+					</script>
+				</div>
+					<!--font size button-->
+
+				<div class="some-class-name">
+					Location: Credit Card Promotion > <a href="index.html">Home</a>
 				</div>
 			</div>
 		</div>
