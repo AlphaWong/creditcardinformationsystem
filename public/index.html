@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel='stylesheet' href="/lib/angular-socialshare/angular-socialshare.min.css">
     <title>Credit Card</title>
 </head>
 
@@ -26,29 +25,29 @@
                     </div>
                     <div class="header-right">
                         <ul>
-                            <li><a href="#"><i class="fb"> </i></a>
-                            </li>
-                            <li><a href="#"><i class="twt"> </i></a>
-                            </li>
+                            <li><a href="#"><i class="fb"> </i></a></li>
+                            <li><a href="#"><i class="twt"> </i></a></li>
                             <li>
                                 <div class="search2">
                                     <form action="search.html" method="get">
-                                        <input type="text" placeholder='Search' ng-model="search" style='color: lightblue;'>
-                                        <!--<input type="text" name="search" value="Search.." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search..';}">-->
+                                        <input type="text" name="search" value="Search.." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search..';}">
                                         <input type="submit" value="">
                                     </form>
                                 </div>
                                 <div class="hotKey">
-                                    <label>HOT : </label>
-                                    <span><a ng-click='search="Coffee Machine";' href="">Coffee Machine</a></span>
-                                    <span><a ng-click='search="Permanently no annual fee";' href="">Permanently no annual fee</a></span>
-                                    <span><a ng-click='search="Cash Rebate";' href="">Cash Rebates</a></span>
-                                    <span><a ng-click='search="Entertainment";' href="">Entertainment</a></span>
+                                    <label>HOT: </label>
+                                    <span><a href="search.html?search=Coffee%20Machine">Coffee Machine</a></span>
+                                    <span><a href="search.html?search=Permanently%20no%20annual%20fee">Permanently no annual fee</a></span>
+                                    <span><a href="search.html?search=Cash%20Rebates">Cash Rebates</a></span>
+                                    <span><a href="search.html?search=Entertainment">Entertainment</a></span>
                                 </div>
                             </li>
-                            <li>
-
-                            </li>
+                            <!-- <li>
+                                <section layout="row" layout-sm="column" layout-align="center center">
+                                    <md-button class="md-raised" ng-click="btnFontSizeSmall()">Less</md-button>
+                                    <md-button class="md-raised md-primary" ng-click="btnFontSizeLarge()">More</md-button>
+                                </section>
+                            </li> -->
                             <div class="clearfix"></div>
                         </ul>
 
@@ -58,7 +57,19 @@
                 <div class="head-nav">
                     <span class="menu"> </span>
                     <ul class="cl-effect-15">
-                        <li class="active"><a href="index.html">HOME</a>
+                        <li class="active"><a href="index.html">Home</a></li>
+                        <li class="active">
+                            <a ng-bind="'privilege_list'|translate"> </a>
+                        </li>
+                        <li class="active">
+                            <a ng-bind="'care_compare'|translate"> </a>
+                        </li>
+                        <li class="active">
+                            <a ng-bind="'welcome_offer'|translate"> </a>
+                        </li>
+                        <li class="active">
+                            <a ng-bind="'contact'|translate">
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -66,24 +77,26 @@
         </div>
     </header>
 
+    <!-- <section layout="row" layout-sm="column" layout-align="center center">
+        <md-button class="md-raised" ng-click="btnFontSizeSmall()">A</md-button>
+        <md-button class="md-raised" ng-click="btnFontSizeMadium()">A</md-button>
+        <md-button class="md-raised" ng-click="btnFontSizeLarge()">A</md-button>
+    </section> -->
     <div layout="row">
         <div flex>
             <headSlide></headSlide>
         </div>
     </div>
-    <div><a ng-click="app.predicate='title';app.reverse!=reverse;">title</a></div>
-     {{app.predicate}}     {{app.reverse}}
+
     <div layout="row">
         <div flex>
             <div id="content">
                 <!-- head slider -->
                 <md-content>
                     <div layout="column" tabindex="-1" role="main" flex ng-controller="PostGridCtrl" ng-init="init()">
-                        <div><a ng-click="reverse!=reverse;">title</a></div>
                         <md-content flex class="ng-scope md-default-theme">
                             <md-grid-list md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="4:3" md-gutter="8px" md-gutter-gt-sm="4px">
-                                <md-grid-tile ng-repeat="post in posts|limitTo: limit|filter:search|orderBy:app.predicate:reverse" md-rowspan="{{post.content.length>100?2:1}}" md-colspan="2">
-                                   
+                                <md-grid-tile ng-repeat="post in posts|limitTo: limit" md-rowspan="{{post.content.length>100?2:1}}" md-colspan="2">
                                     <post></post>
                                 </md-grid-tile>
                             </md-grid-list>
@@ -103,6 +116,7 @@
             </div>
         </div>
     </div>
+
     <footer class="hidden-print">
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
@@ -114,16 +128,16 @@
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-sanitize.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/angular_material/0.8.3/angular-material.min.js"></script>
         <script src="/lib/angular-socialshare/angular-socialshare.min.js"></script>
-        
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-        <script src="https://apis.google.com/js/platform.js" async defer></script>
         <script src="/js/angular-carousel.min.js"></script>
         <script src="/js/flowtype.js"></script>
         <script src="/app/app.js"></script>
         <script src="/app/factory.js"></script>
         <script src="/app/controller.js"></script>
         <script src="/app/directive.js"></script>
+        <script src="/app/i10n.js"></script>
     </footer>
 </body>
 

@@ -1662,15 +1662,15 @@ header {
     display: block;
 }
 #content {
-    min-height: 100%;
-    height: auto !important;
-    margin-top: 100px;
-    margin-bottom: 40px;
+    /*min-height: 100%;*/
+    /*height: auto !important;*/
+    /*margin-top: 100px;*/
+    /*margin-bottom: 40px;*/
 }
-footer {
+/*footer {
     height: 40px;
     z-index: 1;
-}
+}*/
 .gridListdemoBasicUsage md-grid-list {
     margin: 8px;
 }

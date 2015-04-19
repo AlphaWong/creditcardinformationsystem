@@ -1,9 +1,6 @@
 'use strict';
 'use strict';
-angular.module('app', ['djds4rce.angular-socialshare']);
-angular.module('app', ['djds4rce.angular-socialshare']).config(function($locationProvider) {
-    $locationProvider.html5Mode(true).hashPrefix('!');
-});
+
 app.controller('PostGridCtrl', function($scope, Post) {
         $scope.init = function() {
             $scope.posts = Post.query();
@@ -12,9 +9,6 @@ app.controller('PostGridCtrl', function($scope, Post) {
         $scope.loadMore = function() {
             $scope.limit += 10;
         }
-
-        // $scope.reverse=false;
-        // $scope.predicate='-title';
     })
     .controller('AppCtrl', ['$scope', '$mdSidenav', '$mdDialog', '$location', function($scope, $mdSidenav, $mdDialog, $location) {
         $scope.toggleSidenav = function(menuId) {
@@ -23,6 +17,22 @@ app.controller('PostGridCtrl', function($scope, Post) {
         $scope.init = function() {
             $location.path('')
         }
+        $scope.btnFontSizeSmall = function() {
+            $('body').flowtype({
+                fontRatio: 90
+            });
+        };
+        $scope.btnFontSizeMadium = function() {
+            $('body').flowtype({
+                fontRatio: 95
+            });
+        };
+        $scope.btnFontSizeLarge = function() {
+            $('body').flowtype({
+                fontRatio: 100
+            });
+        };
+
         $scope.composePost = function(ev) {
             $mdDialog.show({
                 controller: 'PostCtrl',
