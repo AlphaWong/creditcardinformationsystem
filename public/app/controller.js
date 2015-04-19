@@ -54,6 +54,7 @@ app.controller('PostGridCtrl', function($scope, Post) {
 .controller('PostCtrl', ['$scope', '$mdDialog', '$timeout', '$location', '$http',
         function($scope, $mdDialog, $timeout, $location, $http) {
             $scope.reverse = false;
+            $scope.tab1Content=" Credit Card is delighted to present the year-round privileges, giving you good life every day! Apart from the everyday offers for all cardholders, we especially select an array of privileges at Michelin-starred restaurants and world-class brands for selected credit card* cardholders.";
             $scope.predicate = 'title';
             if ($scope.post) {
                 var title_ = $scope.post.title;

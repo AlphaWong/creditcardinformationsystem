@@ -1741,3 +1741,28 @@ md-grid-tile {
 .hotKey  a:hover{
 	text-decoration: underline;
 }
+
+.pageHeader{
+	background-color:#f5f6f7;
+	padding: 2em 0;
+}
+.pageHeader h2{
+	color: #556a7f;
+	font-size: 3em;
+	margin: 0em;
+	font-weight: 700;
+	text-align: center;
+}
+.promoteHeader{
+	font-weight:bold;
+}
+.subDetail label{
+    margin-right:0.8em;
+    width:6em;
+}
+.keyWords{
+    margin-right:0.5em;
+    padding: 0.3em 0.8em;
+    background-color:#EEE;
+    border-radius: 0.5em;
+}
