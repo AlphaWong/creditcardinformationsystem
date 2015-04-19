@@ -53,7 +53,6 @@ app.controller('PostGridCtrl', function($scope, Post) {
 
             $scope.fetchImg = function() {
                 $scope.imgUrl = 'http://lorempixel.com/400/200/technics/?t=' + Math.floor(Math.random() * 400);
-                console.log($scope.imgUrl)
             };
 
             function nextSlide() {
