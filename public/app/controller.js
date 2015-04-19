@@ -31,17 +31,22 @@ app.controller('PostGridCtrl', function($scope, Post) {
             });
         };
     }])
-    .controller('PostCtrl', ['$scope', '$mdDialog', '$timeout',
+     .controller('PostCtrl', ['$scope', '$mdDialog', '$timeout',
         function($scope, $mdDialog, $timeout) {
-        $scope.showDetail = function(ev) {
-            $mdDialog.show(
-                $mdDialog.alert()
-                .title($scope.post.title)
-                .content($scope.post.content)
-                .ok('Got it!')
-                .targetEvent(ev)
-            );
-        };
+            var title_=$scope.post.title;
+            $scope.showDetail = function(ev) {
+                $mdDialog.show({
+                    targetEvent: ev,
+                    templateUrl:'/partial/dialog.html',
+                    controller: DialogController
+                });
+            };
+            function DialogController(scope, $mdDialog) {
+                scope.title_ = title_;
+                scope.closeDialog = function() {
+                    $mdDialog.hide();
+                }
+            }
             $scope.closeDialog = function() {
                 $mdDialog.hide();
             };
