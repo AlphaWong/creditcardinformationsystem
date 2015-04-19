@@ -7,13 +7,15 @@ app.controller('PostGridCtrl', function($scope, Post) {
         };
         $scope.loadMore = function() {
             $scope.limit += 10;
-            console.log('call')
         }
     })
-    .controller('AppCtrl', ['$scope', '$mdSidenav', '$mdDialog', function($scope, $mdSidenav, $mdDialog) {
+    .controller('AppCtrl', ['$scope', '$mdSidenav', '$mdDialog', '$location', function($scope, $mdSidenav, $mdDialog, $location) {
         $scope.toggleSidenav = function(menuId) {
             $mdSidenav(menuId).toggle();
         };
+        $scope.init = function() {
+            $location.path('')
+        }
         $scope.composePost = function(ev) {
             $mdDialog.show({
                 controller: 'PostCtrl',
@@ -31,16 +33,22 @@ app.controller('PostGridCtrl', function($scope, Post) {
             });
         };
     }])
-     .controller('PostCtrl', ['$scope', '$mdDialog', '$timeout',
-        function($scope, $mdDialog, $timeout) {
-            var title_=$scope.post.title;
+    .controller('PostCtrl', ['$scope', '$mdDialog', '$timeout', '$location',
+        function($scope, $mdDialog, $timeout, $location) {
+            var title_ = $scope.post.title;
             $scope.showDetail = function(ev) {
+                $location.hash($scope.post.post_id);
                 $mdDialog.show({
                     targetEvent: ev,
-                    templateUrl:'/partial/dialog.html',
+                    templateUrl: '/partial/dialog.html',
                     controller: DialogController
                 });
+                if ($scope.nextSlideTimer) {
+                    $timeout.cancel($scope.nextSlideTimer);
+                    nextSlide();
+                }
             };
+
             function DialogController(scope, $mdDialog) {
                 scope.title_ = title_;
                 scope.closeDialog = function() {
@@ -49,9 +57,10 @@ app.controller('PostGridCtrl', function($scope, Post) {
             }
             $scope.closeDialog = function() {
                 $mdDialog.hide();
+                $location.url('/');
             };
             $scope.init = function() {
-                $scope.selectedIndex =  Math.round(Math.random());
+                $scope.selectedIndex = Math.round(Math.random());
                 nextSlide();
                 $scope.fetchImg();
             };
@@ -64,7 +73,7 @@ app.controller('PostGridCtrl', function($scope, Post) {
                 $timeout(function() {
                     $scope.selectedIndex = Math.round(Math.random());
                     nextSlide();
-                }, Math.floor(7 + Math.random() * 4)*1000);
+                }, Math.floor(7 + Math.random() * 4) * 1000);
             }
         }
     ])
@@ -77,13 +86,12 @@ app.controller('PostGridCtrl', function($scope, Post) {
             $scope.limit += 10;
             console.log('call')
         }
-    }).controller('ComposeCtrl', function($scope,Post) {
+    }).controller('ComposeCtrl', function($scope, Post) {
         $scope.init = function() {
 
         };
-        $scope.submit = function () {
-            var post=new Post($scope.post);
+        $scope.submit = function() {
+            var post = new Post($scope.post);
             post.$save();
         };
     });
-
