@@ -1,10 +1,31 @@
-<md-content class="md-padding" layout-padding>
+<md-content class="md-padding" layout-padding ng-controller="PostCtrl" ng-init="init()">
     <md-card>
-        <img ng-show="post.img" ng-src="/content/{{post.img}}" class="md-card-image">
         <md-card-content>
-            <h2 class="md-title" ng-bind="post.title"></h2>
-            <p ng-bind="post.content |limitTo: 100"></p>
-            <a ng-click="click()">Read More</a>
+            <md-tabs md-dynamic-height md-border-bottom md-selected="selectedIndex" style="margin-top: -25px;">
+                <md-tab label="one">
+                    <md-content class="md-padding">
+                        <h3><span ng-bind="post.title"></span></h3>
+                        <p>
+                            <img style="width:10em" ng-src="{{imgUrl}}" class="md-card-image">
+                            <span ng-bind-html="post.content |limitTo: 100|linky"></span>
+                            <span ng-show="post.content.length>100">...</span>
+                        </p>
+                    </md-content>
+                </md-tab>
+                <md-tab label="two">
+                    <md-content class="md-padding">
+                        <span ng-bind-html="tab1Content|limitTo: 100|linky">
+                            
+                        </span>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+
+            <div layout="column" layout-align="center">
+                <md-button class="md-primary" ng-click="showDetail($event)">
+                    Read More
+                </md-button>
+            </div>
         </md-card-content>
     </md-card>
 </md-content>

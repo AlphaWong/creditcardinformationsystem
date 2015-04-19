@@ -1,5 +1,6 @@
 'use strict';
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+    uuid = require('node-uuid');
 
 var IssuingBank = mongoose.model('IssuingBank', {
     name: String,
@@ -43,7 +44,10 @@ var CreditCardWelcomeOffer = mongoose.model('CreditCardWelcomeOffer', {
 var Post = mongoose.model('Post', {
     post_id: {
         type: String,
-        index: true
+        index: true,
+        default: function() {
+            return uuid.v1();
+        }
     },
     title: String,
     issuingBank: {

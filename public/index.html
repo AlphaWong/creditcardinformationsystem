@@ -1,44 +1,122 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="CreditCardApp" ng-controller="AppCtrl">
+<html lang="en" ng-app="CreditCardApp" ng-controller="AppCtrl as app" ng-init="init()">
 
 <head>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
     <meta charset="utf-8">
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.8.3/angular-material.min.css">
+    <base href="/">
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/angular_material/0.8.3/angular-material.min.css">
+    <link rel="stylesheet" href="/css/angular-carousel.css" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="/css/style.css">
     <title>Credit Card</title>
 </head>
 
-<body layout="column">
+<body>
     <header>
-        <md-toolbar layout="row">
-            <button ng-click="toggleSidenav('left')" hide-gt-sm class="menuBtn">
-                <span class="visually-hidden">Menu</span>
-            </button>
-            <h1 class="md-toolbar-tools" layout-align-gt-sm="center">Credit Card</h1>
-        </md-toolbar>
+        <div class="banner">
+            <div class="container">
+                <div class="header">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="images/logo.png" class="img-responsive" alt="">
+                        </a>
+                    </div>
+                    <div class="header-right">
+                        <ul>
+                            <li><a href="#"><i class="fb"> </i></a></li>
+                            <li><a href="#"><i class="twt"> </i></a></li>
+                            <li>
+                                <div class="search2">
+                                    <form action="search.html" method="get">
+                                        <input type="text" name="search" value="Search.." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search..';}">
+                                        <input type="submit" value="">
+                                    </form>
+                                </div>
+                                <div class="hotKey">
+                                    <label>HOT: </label>
+                                    <span><a href="search.html?search=Coffee%20Machine">Coffee Machine</a></span>
+                                    <span><a href="search.html?search=Permanently%20no%20annual%20fee">Permanently no annual fee</a></span>
+                                    <span><a href="search.html?search=Cash%20Rebates">Cash Rebates</a></span>
+                                    <span><a href="search.html?search=Entertainment">Entertainment</a></span>
+                                </div>
+                            </li>
+                            <!-- <li>
+                                <section layout="row" layout-sm="column" layout-align="center center">
+                                    <md-button class="md-raised" ng-click="btnFontSizeSmall()">Less</md-button>
+                                    <md-button class="md-raised md-primary" ng-click="btnFontSizeLarge()">More</md-button>
+                                </section>
+                            </li> -->
+                            <div class="clearfix"></div>
+                        </ul>
+
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="head-nav">
+                    <span class="menu"> </span>
+                    <ul class="cl-effect-15">
+                        <li class="active"><a href="index.html">Home</a></li>
+                        <li class="active">
+                            <a ng-bind="'privilege_list'|translate"> </a>
+                        </li>
+                        <li class="active">
+                            <a ng-bind="'care_compare'|translate"> </a>
+                        </li>
+                        <li class="active">
+                            <a ng-bind="'welcome_offer'|translate"> </a>
+                        </li>
+                        <li class="active">
+                            <a ng-bind="'contact'|translate">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </header>
-        <md-content md-scroll-y>
-        <div id="content">
-            <div layout="column" tabindex="-1" role="main" flex>
-                <md-content flex class="ng-scope md-default-theme">
-                    <div ng-controller="PostCtrl" ng-init="init()">
-                        <md-content class="md-padding" flex md-scroll-y layout-padding>
-                            <md-grid-list md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="4:3" md-gutter-gt-sm="4px" md-gutter="8px">
-                                <md-grid-tile ng-repeat="post in posts|limitTo: limit" md-rowspan="3" md-colspan="2">
+
+    <!-- <section layout="row" layout-sm="column" layout-align="center center">
+        <md-button class="md-raised" ng-click="btnFontSizeSmall()">A</md-button>
+        <md-button class="md-raised" ng-click="btnFontSizeMadium()">A</md-button>
+        <md-button class="md-raised" ng-click="btnFontSizeLarge()">A</md-button>
+    </section> -->
+    <div layout="row">
+        <div flex>
+            <headSlide></headSlide>
+        </div>
+    </div>
+
+    <div layout="row">
+        <div flex>
+            <div id="content">
+                <!-- head slider -->
+                <md-content>
+                    <div layout="column" tabindex="-1" role="main" flex ng-controller="PostGridCtrl" ng-init="init()">
+                        <md-content flex class="ng-scope md-default-theme">
+                            <md-grid-list md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="4:3" md-gutter="8px" md-gutter-gt-sm="4px">
+                                <md-grid-tile ng-repeat="post in posts|limitTo: limit" md-rowspan="{{post.content.length>100?2:1}}" md-colspan="2">
                                     <post></post>
                                 </md-grid-tile>
                             </md-grid-list>
                         </md-content>
+
                         <section layout="row" layout-sm="column" layout-align="center center">
-                            <md-button class="md-raised" ng-click="loadLess()">Button</md-button>
-                            <md-button class="md-raised md-primary" ng-click="loadMore()">Primary</md-button>
+                            <md-button class="md-raised" ng-click="loadLess()">Less</md-button>
+                            <md-button class="md-raised md-primary" ng-click="loadMore()">More</md-button>
+                            <div layout="row" layout-align="end end">
+                                <button class="md-primary md-fab md-fab-bottom-right md-button md-default-theme" ng-click="app.composePost()">
+                                    <span class="ng-scope">+</span>
+                                </button>
+                            </div>
                         </section>
                     </div>
                 </md-content>
             </div>
         </div>
-    </md-content>
+    </div>
+
     <footer class="hidden-print">
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
@@ -46,13 +124,25 @@
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-messages.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-touch.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-sanitize.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/angular_material/0.8.3/angular-material.min.js"></script>
+        <script src="/lib/angular-socialshare/angular-socialshare.min.js"></script>
+<<<<<<< Updated upstream
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+=======
+
+>>>>>>> Stashed changes
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script src="/js/angular-carousel.min.js"></script>
+        <script src="/js/flowtype.js"></script>
         <script src="/app/app.js"></script>
         <script src="/app/factory.js"></script>
         <script src="/app/controller.js"></script>
         <script src="/app/directive.js"></script>
+        <script src="/app/i10n.js"></script>
     </footer>
 </body>
 
 </html>
-<!--  -->
