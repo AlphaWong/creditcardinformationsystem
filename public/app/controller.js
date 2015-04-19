@@ -1,5 +1,9 @@
 'use strict';
-
+'use strict';
+angular.module('app',['djds4rce.angular-socialshare']);
+angular.module('app',['djds4rce.angular-socialshare']).config(function($locationProvider){
+    $locationProvider.html5Mode(true).hashPrefix('!');
+});
 app.controller('PostGridCtrl', function($scope, Post) {
         $scope.init = function() {
             $scope.posts = Post.query();
@@ -33,15 +37,16 @@ app.controller('PostGridCtrl', function($scope, Post) {
             });
         };
     }])
-    .controller('PostCtrl', ['$scope', '$mdDialog', '$timeout', '$location',
-        function($scope, $mdDialog, $timeout, $location) {
+
+.controller('PostCtrl', ['$scope', '$mdDialog', '$timeout', '$location', '$http',
+        function($scope, $mdDialog, $timeout, $location, $http) {
             if ($scope.post)
                 var title_ = $scope.post.title;
             $scope.showDetail = function(ev) {
                 $location.hash($scope.post.post_id);
                 $mdDialog.show({
                     targetEvent: ev,
-                    templateUrl: '/partial/dialog.html',
+                    templateUrl: '/partial/template/directive/dialog.html',
                     controller: DialogController
                 });
                 if ($scope.nextSlideTimer) {
@@ -52,9 +57,12 @@ app.controller('PostGridCtrl', function($scope, Post) {
 
             function DialogController(scope, $mdDialog) {
                 scope.title_ = title_;
-                scope.closeDialog = function() {
-                    $mdDialog.hide();
-                }
+                // scope.closeDialog = function() {
+                //     $mdDialog.hide();
+                // }
+                scope.cancel = function() {
+                    $mdDialog.cancel();
+                };
             }
             $scope.closeDialog = function() {
                 $mdDialog.hide();
@@ -64,11 +72,16 @@ app.controller('PostGridCtrl', function($scope, Post) {
                 $scope.selectedIndex = Math.round(Math.random());
                 nextSlide();
                 $scope.fetchImg();
+                $http.get('https://en.wikipedia.org/w/api.php?action=query&list=random&rnlimit=1&format=json').
+                success(function(data) {
+                    $scope.tab1Content = data.query.random.title;
+                });
             };
 
             $scope.fetchImg = function() {
                 $scope.imgUrl = 'http://lorempixel.com/400/200/technics/?t=' + Math.floor(Math.random() * 400);
             };
+
 
             function nextSlide() {
                 $timeout(function() {

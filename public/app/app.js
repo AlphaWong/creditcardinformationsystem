@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('CreditCardApp', ['ngMaterial', 'ngRoute', 'ngResource', 'ngSanitize', 'ngAria', 'ngTouch', 'angular-carousel'])
+var app = angular.module('CreditCardApp', ['ngMaterial', 'ngRoute', 'ngResource', 'ngSanitize', 'ngAria', 'ngTouch', 'angular-carousel','djds4rce.angular-socialshare'])
     .config(function($mdThemingProvider) {
         $mdThemingProvider.theme('default')
             .primaryPalette('blue-grey')
@@ -9,4 +9,6 @@ var app = angular.module('CreditCardApp', ['ngMaterial', 'ngRoute', 'ngResource'
         $mdThemingProvider.theme('docs-dark', 'default')
             .primaryPalette('yellow')
             .dark();
-    });;
+    }).config(function($locationProvider){
+    $locationProvider.html5Mode(true).hashPrefix('!');
+});

@@ -4,17 +4,16 @@
             <md-tabs md-dynamic-height md-border-bottom md-selected="selectedIndex" style="margin-top: -25px;">
                 <md-tab label="one">
                     <md-content class="md-padding">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin
-                            consectetur felis nec, feugiat ultricies mi.</p>
+                        <p>
+                            <img style="width:10em" ng-src="{{imgUrl}}" class="md-card-image">
+                            <span ng-bind-html="post.content |limitTo: 100|linky"></span>
+                            <span ng-show="post.content.length>100">...</span>
+                        </p>
                     </md-content>
                 </md-tab>
                 <md-tab label="two">
                     <md-content class="md-padding">
-                        <p>
-                            <img style="width:100%"  ng-src="{{imgUrl}}" class="md-card-image">
-                            <span ng-bind-html="post.content |limitTo: 100|linky"></span>
-                            <span ng-show="post.content.length>100">...</span>
-                        </p>
+                        <span ng-bind-html="tab1Content|limitTo: 100|linky"></span>
                     </md-content>
                 </md-tab>
             </md-tabs>
