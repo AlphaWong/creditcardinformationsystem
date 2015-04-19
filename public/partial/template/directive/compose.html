@@ -3,7 +3,7 @@
         <div layout layout-sm="column">
             <md-input-container flex>
                 <label>Title</label>
-                <input ng-model="post.title">
+                <input ng-model="post.title" required>
             </md-input-container>
         </div>
         <div layout layout-sm="column">
@@ -20,7 +20,7 @@
         </div>
         <md-input-container flex>
             <label>Content</label>
-            <textarea ng-model="post.content" columns="1" md-maxlength="100000"></textarea>
+            <textarea ng-model="post.content" columns="1" md-maxlength="100000" required></textarea>
         </md-input-container>
         <div layout layout-sm="column">
             <md-input-container>
@@ -28,5 +28,5 @@
             </md-input-container>
         </div>
     </md-content>
-    <!--"tag" : []-->
+
 </form>
