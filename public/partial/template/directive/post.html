@@ -11,7 +11,7 @@
                 <md-tab label="two">
                     <md-content class="md-padding">
                         <p>
-                            <img style="width:100%" ng-show="post.img" ng-src="/content/{{post.img}}" class="md-card-image">
+                            <img style="width:100%"  ng-src="{{imgUrl}}" class="md-card-image">
                             <span ng-bind-html="post.content |limitTo: 100|linky"></span>
                             <span ng-show="post.content.length>100">...</span>
                         </p>

@@ -48,6 +48,12 @@ app.controller('PostGridCtrl', function($scope, Post) {
             $scope.init = function() {
                 $scope.selectedIndex =  Math.round(Math.random());
                 nextSlide();
+                $scope.fetchImg();
+            };
+
+            $scope.fetchImg = function() {
+                $scope.imgUrl = 'http://lorempixel.com/400/200/technics/?t=' + Math.floor(Math.random() * 400);
+                console.log($scope.imgUrl)
             };
 
             function nextSlide() {
