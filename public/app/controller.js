@@ -35,7 +35,8 @@ app.controller('PostGridCtrl', function($scope, Post) {
     }])
     .controller('PostCtrl', ['$scope', '$mdDialog', '$timeout', '$location',
         function($scope, $mdDialog, $timeout, $location) {
-            var title_ = $scope.post.title;
+            if ($scope.post)
+                var title_ = $scope.post.title;
             $scope.showDetail = function(ev) {
                 $location.hash($scope.post.post_id);
                 $mdDialog.show({
