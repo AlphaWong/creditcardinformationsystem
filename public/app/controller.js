@@ -1,7 +1,7 @@
 'use strict';
 'use strict';
-angular.module('app',['djds4rce.angular-socialshare']);
-angular.module('app',['djds4rce.angular-socialshare']).config(function($locationProvider){
+angular.module('app', ['djds4rce.angular-socialshare']);
+angular.module('app', ['djds4rce.angular-socialshare']).config(function($locationProvider) {
     $locationProvider.html5Mode(true).hashPrefix('!');
 });
 app.controller('PostGridCtrl', function($scope, Post) {
@@ -12,6 +12,9 @@ app.controller('PostGridCtrl', function($scope, Post) {
         $scope.loadMore = function() {
             $scope.limit += 10;
         }
+
+        // $scope.reverse=false;
+        // $scope.predicate='-title';
     })
     .controller('AppCtrl', ['$scope', '$mdSidenav', '$mdDialog', '$location', function($scope, $mdSidenav, $mdDialog, $location) {
         $scope.toggleSidenav = function(menuId) {
@@ -40,8 +43,12 @@ app.controller('PostGridCtrl', function($scope, Post) {
 
 .controller('PostCtrl', ['$scope', '$mdDialog', '$timeout', '$location', '$http',
         function($scope, $mdDialog, $timeout, $location, $http) {
-            if ($scope.post)
+            $scope.reverse = false;
+            $scope.predicate = 'title';
+            if ($scope.post) {
                 var title_ = $scope.post.title;
+                var content = $scope.post.content;
+            }
             $scope.showDetail = function(ev) {
                 $location.hash($scope.post.post_id);
                 $mdDialog.show({
@@ -55,12 +62,11 @@ app.controller('PostGridCtrl', function($scope, Post) {
                 }
             };
 
-            function DialogController(scope, $mdDialog) {
-                scope.title_ = title_;
-                // scope.closeDialog = function() {
-                //     $mdDialog.hide();
-                // }
-                scope.cancel = function() {
+            function DialogController($scope, $mdDialog) {
+                $scope.title_ = title_;
+                    $scope.content = content;
+                    console.log( $scope.content)
+                $scope.cancel = function() {
                     $mdDialog.cancel();
                 };
             }
