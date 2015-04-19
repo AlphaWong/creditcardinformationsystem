@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="CreditCardApp" ng-controller="AppCtrl" ng-init="init()">
+<html lang="en" ng-app="CreditCardApp" ng-controller="AppCtrl as app" ng-init="init()">
 
 <head>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
@@ -72,21 +72,23 @@
                         <md-content flex class="ng-scope md-default-theme">
                             <md-grid-list md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="4:3" md-gutter="8px" md-gutter-gt-sm="4px">
                                 <md-grid-tile ng-repeat="post in posts|limitTo: limit" md-rowspan="{{post.content.length>100?2:1}}" md-colspan="2">
+
                                     <post></post>
                                 </md-grid-tile>
                             </md-grid-list>
                         </md-content>
 
                         <section layout="row" layout-sm="column" layout-align="center center">
-                            <md-button class="md-raised" ng-click="loadLess()">Button</md-button>
-                            <md-button class="md-raised md-primary" ng-click="loadMore()">Primary</md-button>
+                            <md-button class="md-raised" ng-click="loadLess()">Less</md-button>
+                            <md-button class="md-raised md-primary" ng-click="loadMore()">More</md-button>
+                            <div layout="row" layout-align="end end">
+                                <button class="md-primary md-fab md-fab-bottom-right md-button md-default-theme" ng-click="app.composePost()">
+                                    <span class="ng-scope">+</span>
+                                </button>
+                            </div>
                         </section>
                     </div>
                 </md-content>
-
-                <button class="md-primary md-fab md-fab-bottom-right md-button md-default-theme" ng-click="composePost()">
-                    <span class="ng-scope">+</span>
-                </button>
             </div>
         </div>
     </div>
