@@ -6,7 +6,8 @@
         </md-content>
         <div layout="row">
             <div gplus class="g-plus" data-size="tall" data-annotation="bubble" data-href='http://google.com' data-action='share'></div>
-            <div facebook class="facebookShare" data-title='{{title}}' data-picture-url='http://i.imgur.com/WACv9Cl.jpg' data-url='{{url}}' data-shares='shares'>{{ shares }}</div>
+             <a facebook class="facebookShare" data-url='http://google.com' data-shares='shares'>{{ shares }}</a>
+            <!--<div facebook class="facebookShare" data-title='{{title}}' data-picture-url='http://i.imgur.com/WACv9Cl.jpg' data-url='{{url}}' data-shares='shares'>{{ shares }}</div>-->
         </div>
         <div class="md-actions" layout="row">
             <md-button ng-click="cancel()">
